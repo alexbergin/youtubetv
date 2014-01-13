@@ -1,0 +1,482 @@
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    border: none;
+}
+
+*::selection {
+    background-color: rgba(28,28,28,1);
+}
+
+html , body {
+    overflow: hidden;
+    background-size: cover;
+    background-image: url( static.gif );
+}
+
+#vidInfo {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    padding: 30px;
+    max-width: 900px;
+}
+
+body.preferences #vidInfo {
+    padding-left: 60px;
+}
+
+body.video #vidInfo {
+    padding-left: 30px;
+}
+
+#progress {
+    background-color: rgba(255,38,12,1);
+    height: 1px;
+    position: fixed;
+    z-index: 1000;
+    top: calc( 100% - 3px );
+    left: 0;
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -ms-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    transition: all 1s linear;
+}
+
+#progressBG {
+    background-color: rgba(28,28,28,1);
+    height: 5px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    top: calc( 100% - 5px );
+    left: 0;
+}
+
+#vidInfo h1 {
+    font-size: 78px;
+    line-height: 74px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-family: "Titillium Web" , sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 40px;
+    -webkit-transform: translate( -4px , 0px );
+    -moz-transform: translate( -4px , 0px );
+    -ms-transform: translate( -4px , 0px );
+    -o-transform: translate( -4px , 0px );
+    transform: translate( -4px , 0px );
+}
+
+#vidInfo h2 {
+    font-size: 21px;
+    line-height: 34px;
+    color: #fff;
+    font-family: "Titillium Web" , sans-serif;
+    font-weight: 100;
+    margin-top: 15px;
+    max-width: 600px;
+    margin-bottom: 18px;
+}
+
+#vidInfo a h3 {
+    text-decoration: none;
+    display: inline-block;
+    padding-bottom: 3px;
+    margin-right: 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.7);
+    font-size: 14px;
+    line-height: 21px;
+    color: #fff;
+    text-transform: lowercase;
+    font-family: "Titillium Web" , sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 0.7;
+}
+
+#video b h3 {
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 18px;
+    font-size: 11px;
+    line-height: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Titillium Web" , sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 1;
+}
+
+#video b p {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    line-height: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Titillium Web" , sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    opacity: 1;
+}
+
+#video , #preferences , #interests {
+    position: fixed;
+    -webkit-transform: translate( 0px , 0px );
+    -moz-transform: translate( 0px , 0px );
+    -ms-transform: translate( 0px , 0px );
+    -o-transform: translate( 0px , 0px );
+    transform: translate( 0px , 0px );
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0);
+}
+
+#preferences {
+    width: 360px;
+    padding: 20px;
+    height: calc( 100% - 40px );
+    background-color: rgba(255,38,12,1);
+}
+
+#preferences h1 , #preferences h2 , #preferences h3 , #preferences p {
+    font-family: "Titillium Web" , sans-serif;
+    color: #fff;
+}
+
+#preferences h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 46px;
+    margin-bottom: 21px;
+    letter-spacing: 1px;
+}
+
+#preferences h2 {
+    font-size: 21px;
+    font-weight: 100;
+    line-height: 32px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+#preferences h3 {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#preferences p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+#preferences a {
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    padding-bottom: 2px;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -3px;
+    color: inherit;
+}
+
+#preferences b {
+    text-decoration: none;
+    display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    background-color: #fff;
+    color: rgba(255,38,12,1);
+    padding: 3px;
+    margin: 3px;
+    margin-left: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 6px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+#interests {
+    width: calc( 100% - 40px );
+    height: calc( 100% - 40px );
+    padding: 20px;
+    background-color: rgba(255,38,12,1);
+    font-family: "Titillium Web" , sans-serif;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    font-size: 56px;
+    line-height: 80px;
+    font-weight: 200;
+    color: #fff;
+    outline: none;
+    resize: none;
+}
+
+body.video #video {
+    top: 0%;
+    left: 0%;
+}
+
+body.preferences #video {
+    left: 400px;
+    top: 0%;
+}
+
+body.interests #video {
+    top: 100%;
+    left: 0%;
+}
+
+body.interests #interests {
+    top: 0%;
+    left: 0%;
+}
+
+body.video #interests , body.preferences #interests {
+    top: -100%;
+    left: 0%;
+}
+
+body.preferences #preferences {
+    top: 0%;
+    left: 0px;
+}
+
+body.video #preferences {
+    top: 0%;
+    left: -400px;
+}
+
+body.interests #preferences {
+    top: 100%;
+    left: -400px;
+}
+
+#interButton , #prefButton , #playButton , #nextButton , #previousButton {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255,255,255,1);
+    color: rgba(255,38,12,1);
+    text-align: center;
+    cursor: pointer;
+    -webkit-transform: rotate( 0deg );
+    -moz-transform: rotate( 0deg );
+    -ms-transform: rotate( 0deg );
+    -o-transform: rotate( 0deg );
+    transform: rotate( 0deg );
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#interButton {
+    left: 10px;
+    bottom: 14px;
+    -webkit-transition: opacity 1.05s ease;
+    -moz-transition: opacity 1.05s ease;
+    -ms-transition: opacity 1.05s ease;
+    -o-transition: opacity 1.05s ease;
+    transition: opacity 1.05s ease;
+    border-radius: 36px;
+}
+
+#prefButton {
+    bottom: 14px;
+    left: 56px;
+    -webkit-transition: opacity 0.85s ease;
+    -moz-transition: opacity 0.85s ease;
+    -ms-transition: opacity 0.85s ease;
+    -o-transition: opacity 0.85s ease;
+    transition: opacity 0.85s ease;
+    border-radius: 36px;
+}
+
+#previousButton {
+    bottom: 14px;
+    left: 132px;
+    -webkit-transition: all 0.65s ease;
+    -moz-transition: all 0.65s ease;
+    -ms-transition: all 0.65s ease;
+    -o-transition: all 0.65s ease;
+    transition: all 0.65s ease;
+    -webkit-border-top-left-radius: 36px;
+    -webkit-border-bottom-left-radius: 36px;
+    -moz-border-radius-topleft: 36px;
+    -moz-border-radius-bottomleft: 36px;
+    border-top-left-radius: 36px;
+    border-bottom-left-radius: 36px;
+}
+
+#playButton {
+    bottom: 14px;
+    left: 178px;
+    border-radius: 0px;
+    -webkit-transition: all 0.45s ease;
+    -moz-transition: all 0.45s ease;
+    -ms-transition: all 0.45s ease;
+    -o-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+}
+
+#nextButton {
+    bottom: 14px;
+    left: 224px;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    -webkit-border-top-right-radius: 36px;
+    -webkit-border-bottom-right-radius: 36px;
+    -moz-border-radius-topright: 36px;
+    -moz-border-radius-bottomright: 36px;
+    border-top-right-radius: 36px;
+    border-bottom-right-radius: 36px;
+}
+
+body.interests #interButton {
+    -webkit-transform: rotate( 45deg );
+    -moz-transform: rotate( 45deg );
+    -ms-transform: rotate( 45deg );
+    -o-transform: rotate( 45deg );
+    transform: rotate( 45deg );
+}
+
+body.preferences #prefButton {
+    -webkit-transform: rotate( 45deg );
+    -moz-transform: rotate( 45deg );
+    -ms-transform: rotate( 45deg );
+    -o-transform: rotate( 45deg );
+    transform: rotate( 45deg );
+}
+
+body.interests #interButton , body.interests #prefButton {
+    background-color: rgba(255,255,255,1);
+    color: rgba(255,38,12,1);
+}
+
+/**
+body.interests #interButton {
+    top: calc( 100% - 46px );
+}
+
+body.preferences #prefButton {
+    left: 354px;
+}
+/**/
+
+#interButton p , #prefButton p  , #previousButton p , #playButton p , #nextButton p  {
+    font-family: "Titillium Web" , sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: inherit;
+    width: 36px;
+    text-align: center;
+    line-height: 34px;
+}
+
+#playButton p {
+    -webkit-transform: rotate( 90deg );
+    -moz-transform: rotate( 90deg );
+    -ms-transform: rotate( 90deg );
+    -o-transform: rotate( 90deg );
+    transform: rotate( 90deg );
+}
+
+#player {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transform: translate( 0px , 0px );
+    -moz-transform: translate( 0px , 0px );
+    -ms-transform: translate( 0px , 0px );
+    -o-transform: translate( 0px , 0px );
+    transform: translate( 0px , 0px );
+}
+
+/*
+#player.paused {
+    -webkit-filter: blur( 2px );
+    -moz-filter: blur( 2px );
+    -o-filter: blur( 2px );
+    -ms-filter: blur( 2px );
+    filter: blur( 2px );
+}
+
+#player.playing {
+    -webkit-filter: blur( 0px );
+    -moz-filter: blur( 0px );
+    -o-filter: blur( 0px );
+    -ms-filter: blur( 0px );
+    filter: blur( 0px );
+}
+*/
+
+#introFlag {
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #fff;
+    display: inline-block;
+    font-family: "Titillium Web" , sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: rgba(255,38,12,1);
+    pointer-events: none;
+    position: fixed;
+    bottom: 65px;
+    left: 10px;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -ms-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+#introFlag .arrow {
+    position: absolute;
+    margin-left: -5px;
+    -webkit-transform: translate( 0px , 21px) rotate( 45deg );
+    -moz-transform: translate( 0px , 21px) rotate( 45deg );
+    -ms-transform: translate( 0px , 21px) rotate( 45deg );
+    -o-transform: translate( 0px , 21px) rotate( 45deg );
+    transform: translate( 0px , 21px) rotate( 45deg );
+    color: none;
+    border: none;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    
+}
