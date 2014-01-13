@@ -64,12 +64,14 @@ var yttv = {
             yttv.player.pauseVideo();
             document.getElementById("playButton").innerHTML = "<p style='margin-left: -2px'>^</p>";
             document.getElementById("player").className = "paused";
+            document.getElementById("vidInfo").style.pointerEvents = "auto";
         },
         
         playVid: function(){
             yttv.player.playVideo();
             document.getElementById("playButton").innerHTML = "<p style='margin-left: 1px'>=</p>";
             document.getElementById("player").className = "playing";
+            document.getElementById("vidInfo").style.pointerEvents = "none";
         },
         
         setVid: function( vid ){
@@ -208,6 +210,11 @@ var yttv = {
     init: function(){
         yttv.display.setup();
         yttv.controls.bind();
+        setInterval( function(){
+            if ( typeof document.getElementById("vidInfo").getElementsByTagName("a")[0] != "undefined" ){
+                document.getElementById("vidInfo").getElementsByTagName("a")[0].setAttribute( "href" , yttv.player.getVideoUrl() + "&t=" + Math.round( yttv.player.getCurrentTime()) + "s" );
+            }
+        } , 1000 );
     },
     
     parseInterests: function(){
@@ -316,11 +323,6 @@ var yttv = {
                 document.getElementById("progress").style.width = Math.round(( yttv.player.getCurrentTime() / yttv.player.getDuration()) * window.innerWidth ) + "px";
             } , 1000 / 24 );
             yttv.playerEvents.vidEvent({ data: "start" });
-            setInterval( function(){
-                if ( typeof document.getElementById("vidInfo").getElementsByTagName("a")[0] != "undefined" ){
-                    document.getElementById("vidInfo").getElementsByTagName("a")[0].setAttribute( "href" , yttv.player.getVideoUrl() + "&t=" + Math.round( yttv.player.getCurrentTime()) + "s" );
-                }
-            } , 1000 );
         },
         
         vidEvent: function( event ){
