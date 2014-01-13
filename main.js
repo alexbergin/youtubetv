@@ -73,12 +73,15 @@ var yttv = {
         },
         
         setVid: function( vid ){
-            yttv.player.loadVideoById( vid.id );
-            var upnext = yttv.future[0].title;
-            
-            var vidData = "<h1>" + vid.title + "</h1><b><h3>Video URL</h3></b><a href='" + vid.url + "' target='_blank'><h3>" + vid.url + "</h3></a><b><h3>#" + vid.q + "</h3></b><br /><h2>" + vid.caption + "</h2><b><h3>Up Next</h3><p>"+upnext+"</p></b>";
-            
-            document.getElementById("vidInfo").innerHTML = vidData;
+            if ( typeof vid != "undefined" ){
+                yttv.player.loadVideoById( vid.id );
+                var upnext = yttv.future[0].title;
+                
+                var vidData = "<h1>" + vid.title + "</h1><b><h3>Video URL</h3></b><a href='" + vid.url + "' target='_blank'><h3>" + vid.url + "</h3></a><b><h3>#" + vid.q + "</h3></b><br /><h2>" + vid.caption + "</h2><b><h3>Up Next</h3><p>"+upnext+"</p></b>";
+                
+                document.getElementById("vidInfo").innerHTML = vidData;
+                document.title = vid.title + " | YouTube TV";
+            }
         },
     },
     
@@ -287,7 +290,7 @@ var yttv = {
     auth: function(){
         var clientId = '304114233340',
             scope = 'https://www.googleapis.com/auth/youtube',
-            apiKey = 'AIzaSyAPfeSO5dOAb1PK9oyedJHP_iFihPGWzfQ';
+            apiKey = 'AIzaSyDQPUoxp2ErQlEDTQ_MexBIUu9Lk9ympFM';
             
         function load() {
             gapi.client.setApiKey( apiKey );
