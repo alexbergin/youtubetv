@@ -278,7 +278,7 @@ var yttv = {
             yttv.controls.nextVid();
         }
         
-        var vid = yttv.future[0];
+        var vid = yttv.current;
         var upnext = yttv.future[0].title;
         var vidData = "<h1>" + vid.title + "</h1><b><h3>Video URL</h3></b><a href='" + vid.url + "' target='_blank'><h3>" + vid.url + "</h3></a><b><h3>#" + vid.q + "</h3></b><br /><h2>" + vid.caption + "</h2><b><h3>Up Next</h3><p>"+upnext+"</p></b>";
             
@@ -316,6 +316,11 @@ var yttv = {
                 document.getElementById("progress").style.width = Math.round(( yttv.player.getCurrentTime() / yttv.player.getDuration()) * window.innerWidth ) + "px";
             } , 1000 / 24 );
             yttv.playerEvents.vidEvent({ data: "start" });
+            setInterval( function(){
+                if ( typeof document.getElementById("vidInfo").getElementsByTagName("a")[0] != "undefined" ){
+                    document.getElementById("vidInfo").getElementsByTagName("a")[0].setAttribute( "href" , yttv.player.getVideoUrl() + "&t=" + Math.round( yttv.player.getCurrentTime()) + "s" );
+                }
+            } , 1000 );
         },
         
         vidEvent: function( event ){
