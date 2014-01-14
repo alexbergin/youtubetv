@@ -242,10 +242,31 @@ var yttv = {
         yttv.interests = interestString.split( ", " , 15 );
         
         if ( oldInterests.toString() != yttv.interests.toString() ){
-            console.log( yttv.interests );
+            console.log( yttv.interests.toString() );
             yttv.updateVids();
         }
-
+        
+        var meta = "Watch YouTube videos about ";
+        if ( yttv.interests.length == 1 ){
+            meta += yttv.interests[0] + " ";
+        }
+        for( var i = 0 , idur = yttv.interests.length ; i < idur ; i++ ){
+            if ( i + 1 == idur ){
+                meta += "& " + yttv.interests[i] + " ";
+            } else {
+                if ( idur > 2 ){
+                    meta += yttv.interests[i] + ", "; 
+                } else {
+                    meta += yttv.interests[i] + " "; 
+                }
+            }
+        }
+        
+        meta += "until the end of time.";
+        
+        console.log( meta );
+        
+        document.getElementsByTagName("meta")[1].content = meta;
         yttv.buildHash();
 
     },
