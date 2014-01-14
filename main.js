@@ -216,6 +216,25 @@ var yttv = {
             }
         } , 1000 );
     },
+
+    parseHash: function( init ){
+        if ( document.location.hash.length > 0 ){
+            var hash = document.location.hash.substring(3);
+            while( hash.indexOf("+") != -1 ){
+                hash = hash.replace( "+" , " " );
+            }
+            while( hash.indexOf("&") != -1 ){
+                hash = hash.replace( "&" , ", " );
+            }
+
+            hash = hash.substring( 0 , hash.length );
+            console.log( hash );
+            document.getElementById("interests").value = hash;
+        }
+
+        yttv.parseInterests();
+        
+    },
     
     parseInterests: function(){
         var interestString = document.getElementById("interests").value,
@@ -226,6 +245,25 @@ var yttv = {
             console.log( yttv.interests );
             yttv.updateVids();
         }
+
+        yttv.buildHash();
+
+    },
+
+    buildHash: function(){
+        var hash = "#!/",
+            interests = yttv.interests;
+
+        for( var i = 0 , idur = interests.length ; i < idur ; i ++ ){
+            hash += interests[i];
+            if ( i + 1 < idur ){
+                hash += "&";
+            }
+        }
+        while( hash.indexOf(" ") != -1 ){
+            hash = hash.replace( " " , "+" );
+        }
+        document.location.hash = hash;
     },
     
     updateVids: function( wipe ){
@@ -312,7 +350,7 @@ var yttv = {
         load();
         
         function getYt(){
-            gapi.client.load('youtube', 'v3', yttv.parseInterests );
+            gapi.client.load('youtube', 'v3', function(){ yttv.parseHash( true ); } );
         }
     },
     
