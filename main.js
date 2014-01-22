@@ -249,15 +249,16 @@ var yttv = {
         var meta = "Watch YouTube videos about ";
         if ( yttv.interests.length == 1 ){
             meta += yttv.interests[0] + " ";
-        }
-        for( var i = 0 , idur = yttv.interests.length ; i < idur ; i++ ){
-            if ( i + 1 == idur ){
-                meta += "& " + yttv.interests[i] + " ";
-            } else {
-                if ( idur > 2 ){
-                    meta += yttv.interests[i] + ", "; 
+        } else {
+            for( var i = 0 , idur = yttv.interests.length ; i < idur ; i++ ){
+                if ( i + 1 == idur ){
+                    meta += "& " + yttv.interests[i] + " ";
                 } else {
-                    meta += yttv.interests[i] + " "; 
+                    if ( idur > 2 ){
+                        meta += yttv.interests[i] + ", "; 
+                    } else {
+                        meta += yttv.interests[i] + " "; 
+                    }
                 }
             }
         }
@@ -324,6 +325,7 @@ var yttv = {
     
     parseVids: function( raw ){
         yttv.videos = [];
+        console.log( raw[0] );
         for( var i = 0 , idur = raw.length ; i < idur ; i++ ){
             var vid = {
                 id: raw[i].id.videoId,
